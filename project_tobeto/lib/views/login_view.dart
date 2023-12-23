@@ -25,7 +25,7 @@ class LoginView extends StatelessWidget {
               child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18)),
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.background,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
