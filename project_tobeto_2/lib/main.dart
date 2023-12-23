@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_tobeto/views/home_view.dart';
+import 'package:project_tobeto/views/home_screen.dart';
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
@@ -23,7 +23,7 @@ ThemeData lightTheme = ThemeData(
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: const HomeView(),
+    home: const HomeScreen(),
     theme: lightTheme,
     darkTheme: darkTheme,
     themeMode: ThemeMode.system,
