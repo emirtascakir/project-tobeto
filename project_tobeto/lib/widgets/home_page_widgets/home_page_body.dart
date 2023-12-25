@@ -6,8 +6,8 @@ import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_survey_card.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 
-class HomePageTabView extends StatelessWidget {
-  const HomePageTabView({
+class HomePageBody extends StatelessWidget {
+  const HomePageBody({
     super.key,
   });
 
