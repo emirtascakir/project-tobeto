@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 
@@ -56,17 +54,18 @@ class HomePageBoxes extends StatelessWidget {
               height: 20,
             ),
             Container(
-              width: 300,
-              height: 35,
+              width: context.deviceSize.width * .8,
+              height: context.deviceSize.height * .05,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: context.colorScheme.secondary,
+                color: context.colorScheme.primary,
               ),
               child: TextButton(
                 onPressed: () {},
                 child: const Text(
                   "Başla",
                   style: TextStyle(
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),

@@ -9,7 +9,7 @@ class HomePageExam extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -21,11 +21,11 @@ class HomePageExam extends StatelessWidget {
               offset: const Offset(0, 3),
             ),
           ],
-          color: Colors.white),
+          color: context.colorScheme.onBackground),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
+          const Text(
             "Sınavlarım",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -33,7 +33,7 @@ class HomePageExam extends StatelessWidget {
             height: context.deviceSize.height * .3,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: 1,
                 itemBuilder: (context, index) {
                   return ExamCard(examName: examName, time: time);
                 }),
@@ -71,12 +71,18 @@ class ExamCard extends StatelessWidget {
               offset: const Offset(0, 3),
             ),
           ],
-          color: Colors.white),
+          color: context.colorScheme.onBackground),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            examName,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          const Text(
+            'Herkes İçin Kodlama 1D Değerlendirme Sınavı',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          ),
+          const Text(
+            'Herkes İçin\nKodlama 1D',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w200),
           ),
           Row(
             children: <Widget>[
