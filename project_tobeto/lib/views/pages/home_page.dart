@@ -5,8 +5,8 @@ import 'package:project_tobeto/widgets/home_page_widgets/home_page_exam.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/home_page_footer.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/home_page_header.dart';
 
-class HomePageView extends StatelessWidget {
-  const HomePageView({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

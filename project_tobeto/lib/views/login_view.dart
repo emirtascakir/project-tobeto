@@ -90,7 +90,7 @@ class LoginView extends StatelessWidget {
                                       fontSize: 20,
                                       color: Theme.of(context)
                                           .colorScheme
-                                          .background),
+                                          .primary),
                                 ),
                               ),
                             )),
