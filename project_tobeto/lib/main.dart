@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/views/home_view.dart';
-import 'package:project_tobeto/views/login_view.dart';
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,

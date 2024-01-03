@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
     Text('Katalog'),
     Text('Takvim'),
     Text('Tobeto'),
-    Text('John Doe'),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
