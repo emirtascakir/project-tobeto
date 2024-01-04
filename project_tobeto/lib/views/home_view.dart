@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/views/pages/home_page.dart';
 import 'package:project_tobeto/views/pages/profile_page.dart';
+import 'package:project_tobeto/views/pages/review_page.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -14,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text('Değerlendirmeler'),
+    ReviewPage(),
     ProfilePage(),
     Text('Katalog'),
     Text('Takvim'),
