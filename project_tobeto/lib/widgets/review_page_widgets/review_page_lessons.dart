@@ -1,54 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/widgets/review_page_widgets/review_page_lesson_widget.dart';
 
 class ReviewPageLessons extends StatelessWidget {
-  final String lessonName;
-  const ReviewPageLessons({super.key, required this.lessonName});
+  const ReviewPageLessons({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: context.deviceSize.width,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(22),
-          bottomRight: Radius.circular(22),
-          topLeft: Radius.circular(22),
-          topRight: Radius.circular(22),
-        ),
-        gradient: LinearGradient(
-          colors: [context.colorScheme.primary, Colors.purple.shade800],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Row(
-          children: <Widget>[
-            const Icon(Icons.computer, color: Colors.white),
-            Text(
-              lessonName,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-            const Spacer(),
-            ElevatedButton(
-                style: const ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.white)),
-                onPressed: () {},
-                child: const Text(
-                  "Başla",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                )),
-          ],
-        ),
+    final List<String> lessons = [
+      "Front End",
+      "Full Stack",
+      "Back End",
+      "Microsoft SQL Server",
+      "Masaüstü Programlama"
+    ];
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: SizedBox(
+        height: context.deviceSize.height * .1,
+        child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            separatorBuilder: (context, index) => const SizedBox(width: 15),
+            itemCount: lessons.length,
+            itemBuilder: (context, index) {
+              return ReviewPageLessonWidget(lessonName: lessons[index]);
+            }),
       ),
     );
   }
