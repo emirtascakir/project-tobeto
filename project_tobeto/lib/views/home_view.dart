@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/views/pages/catalog_page.dart';
 import 'package:project_tobeto/views/pages/home_page.dart';
 import 'package:project_tobeto/views/pages/profile_page.dart';
 import 'package:project_tobeto/views/pages/review_page.dart';
@@ -17,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
     HomePage(),
     ReviewPage(),
     ProfilePage(),
+    CatalogPage(), //buraya catologpage yazınca yazdığım sayfa emülatörde açılmıyor ama örneğin catalog searchbar yazarsam açılıyor?
     Text('Katalog'),
     Text('Takvim'),
     Text('Tobeto'),
