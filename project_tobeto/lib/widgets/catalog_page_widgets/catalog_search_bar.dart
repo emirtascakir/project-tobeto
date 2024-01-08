@@ -10,7 +10,7 @@ class CatalogSearchBar extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          color: Color.fromARGB(255, 47, 11, 109),
+          color: const Color.fromARGB(255, 47, 11, 109),
           width: 500,
           height: 250,
           child: Center(
@@ -18,7 +18,7 @@ class CatalogSearchBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: const Text(
                     'Öğrenmeye başla!',
                     style: TextStyle(
@@ -28,7 +28,7 @@ class CatalogSearchBar extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(2.0),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(2.0),
@@ -52,7 +52,7 @@ class SearchBar extends StatelessWidget {
         fillColor: Colors.white,
         hintStyle: const TextStyle(color: Colors.grey),
         hintText: 'Eğitim arayın...',
-        suffixIcon: Icon(Icons.search),
+        suffixIcon: const Icon(Icons.search),
         contentPadding: const EdgeInsets.symmetric(horizontal: 25.0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(60.0),

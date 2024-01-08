@@ -18,7 +18,7 @@ class _HomeViewState extends State<HomeView> {
     HomePage(),
     ReviewPage(),
     ProfilePage(),
-    CatalogPage(), //buraya catologpage yazınca yazdığım sayfa emülatörde açılmıyor ama örneğin catalog searchbar yazarsam açılıyor?
+    CatalogPage(), //buraya catalogpage yazınca yazdığım sayfa emülatörde açılmıyor ama ;örneğin catalog searchbar yazarsam açılıyor.Nerde hata yapıyorum?
     Text('Katalog'),
     Text('Takvim'),
     Text('Tobeto'),
