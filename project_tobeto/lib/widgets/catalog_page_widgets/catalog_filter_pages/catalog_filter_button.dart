@@ -8,7 +8,7 @@ class CatalogFilterButton extends StatefulWidget {
 }
 
 class _CatalogFilterButtonState extends State<CatalogFilterButton> {
-  bool filtreAcik = false;
+  bool isFiltreOn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class _CatalogFilterButtonState extends State<CatalogFilterButton> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              filtreAcik = !filtreAcik;
+              isFiltreOn = !isFiltreOn;
             });
           },
           style: ElevatedButton.styleFrom(

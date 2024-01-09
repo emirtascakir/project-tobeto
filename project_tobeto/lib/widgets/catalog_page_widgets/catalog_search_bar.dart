@@ -7,36 +7,32 @@ class CatalogSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: const Color.fromARGB(255, 47, 11, 109),
-          width: 500,
-          height: 250,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: const Text(
-                    'Öğrenmeye başla!',
-                    style: TextStyle(
-                        fontSize: 44.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(2.0),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: SearchBar(),
-                ),
-              ],
+    return Container(
+      color: const Color.fromARGB(255, 47, 11, 109),
+      width: 500,
+      height: 250,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const Text(
+                'Öğrenmeye başla!',
+                style: TextStyle(
+                    fontSize: 44.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
             ),
-          ),
+            Container(
+              padding: const EdgeInsets.all(2.0),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: SearchBar(),
+            ),
+          ],
         ),
       ),
     );
