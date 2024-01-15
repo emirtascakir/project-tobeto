@@ -27,7 +27,7 @@ class ProfilePageForeignLang extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(
+              const Text(
                 "Yabancı Dillerim",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
