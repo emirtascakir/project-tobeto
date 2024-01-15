@@ -19,10 +19,9 @@ class _HomeViewState extends State<HomeView> {
     ReviewPage(),
     ProfilePage(),
     CatalogPage(), //buraya catalogpage yazınca yazdığım sayfa emülatörde açılmıyor ama ;örneğin catalog searchbar yazarsam açılıyor.Nerde hata yapıyorum?
-    Text('Katalog'),
     Text('Takvim'),
-    Text('Tobeto'),
-    ProfilePage(),
+    HomePage(),
+    ProfilePage(), // TODO: Buraya profil düzenleme sayfası gelecek.
   ];
 
   void _onItemTapped(int index) {

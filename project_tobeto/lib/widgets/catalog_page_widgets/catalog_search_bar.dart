@@ -29,7 +29,7 @@ class CatalogSearchBar extends StatelessWidget {
               padding: const EdgeInsets.all(2.0),
             ),
             Padding(
-              padding: const EdgeInsets.all(2.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: SearchBar(),
             ),
           ],
