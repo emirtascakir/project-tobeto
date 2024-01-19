@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -58,104 +56,106 @@ class ProfileEditPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(15),
-                child: Column(
-                  children: [
-                    _buildTextFormField(
-                      _name,
-                      "Adınız",
-                      TextInputType.name,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildTextFormField(
-                      _surname,
-                      "Soyadınız",
-                      TextInputType.text,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildTextFormField(
-                      _phoneNumber,
-                      "Telefon Numaranız",
-                      TextInputType.phone,
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      cursorColor: Colors.grey,
-                      controller: _dateController,
-                      decoration: InputDecoration(
-                        labelStyle: const TextStyle(color: Colors.grey),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            width: 2.0,
-                            color: Colors.grey,
-                          ),
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      _buildTextFormField(
+                        _name,
+                        "Adınız",
+                        TextInputType.name,
+                      ),
+                      const SizedBox(height: 20),
+                      _buildTextFormField(
+                        _surname,
+                        "Soyadınız",
+                        TextInputType.text,
+                      ),
+                      const SizedBox(height: 20),
+                      _buildTextFormField(
+                        _phoneNumber,
+                        "Telefon Numaranız",
+                        TextInputType.phone,
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        cursorColor: Colors.grey,
+                        controller: _dateController,
+                        decoration: InputDecoration(
+                          labelStyle: const TextStyle(color: Colors.grey),
+                          enabledBorder: OutlineInputBorder(
                             borderSide: const BorderSide(
                               width: 2.0,
-                              color: Colors.black87,
+                              color: Colors.grey,
                             ),
-                            borderRadius: BorderRadius.circular(12.0)),
-                        labelText: 'Tarih',
-                        hintText: 'gg/aa/yyyy',
-                      ),
-                      keyboardType: TextInputType.none,
-                      inputFormatters: [
-                        MaskTextInputFormatter(
-                          mask: '##/##/####',
-                          filter: {'#': RegExp(r'[0-9]')},
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                width: 2.0,
+                                color: Colors.black87,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0)),
+                          labelText: 'Tarih',
+                          hintText: 'gg/aa/yyyy',
                         ),
-                      ],
-                      onTap: () async {
-                        DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: _dateOfBirth,
-                          firstDate: DateTime(1930),
-                          lastDate: _dateOfBirth,
-                        );
+                        keyboardType: TextInputType.none,
+                        inputFormatters: [
+                          MaskTextInputFormatter(
+                            mask: '##/##/####',
+                            filter: {'#': RegExp(r'[0-9]')},
+                          ),
+                        ],
+                        onTap: () async {
+                          DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: _dateOfBirth,
+                            firstDate: DateTime(1930),
+                            lastDate: _dateOfBirth,
+                          );
 
-                        if (pickedDate != null) {
-                          _dateController.text = _dateFormat.format(pickedDate);
-                          _dateOfBirth = pickedDate;
-                        }
-                      },
-                    ),
-                    const SizedBox(height: 20),
-                    _buildTextFormField(
-                      _tcIdNo,
-                      "TC Kimlik No",
-                      TextInputType.number,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildTextFormField(
-                      _eMail,
-                      "E-posta",
-                      TextInputType.emailAddress,
-                    ),
-                    const SizedBox(height: 20),
-                    _buildTextFormField(
-                      _aboutMe,
-                      "Hakkımda",
-                      TextInputType.text,
-                    ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: context.colorScheme.primary),
-                        onPressed: () {
-                          inspect(_dateOfBirth);
+                          if (pickedDate != null) {
+                            _dateController.text =
+                                _dateFormat.format(pickedDate);
+                            _dateOfBirth = pickedDate;
+                          }
                         },
-                        child: SizedBox(
-                            width: context.deviceSize.width * .5,
-                            child: const Text(
-                              "Kaydet",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700),
-                              textAlign: TextAlign.center,
-                            ))),
-                  ],
+                      ),
+                      const SizedBox(height: 20),
+                      _buildTextFormField(
+                        _tcIdNo,
+                        "TC Kimlik No",
+                        TextInputType.number,
+                      ),
+                      const SizedBox(height: 20),
+                      _buildTextFormField(
+                        _eMail,
+                        "E-posta",
+                        TextInputType.emailAddress,
+                      ),
+                      const SizedBox(height: 20),
+                      _buildTextFormField(
+                        _aboutMe,
+                        "Hakkımda",
+                        TextInputType.text,
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: context.colorScheme.primary),
+                          onPressed: () {},
+                          child: SizedBox(
+                              width: context.deviceSize.width * .5,
+                              child: const Text(
+                                "Kaydet",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700),
+                                textAlign: TextAlign.center,
+                              ))),
+                    ],
+                  ),
                 ),
               ),
               const HomePageFooter()
