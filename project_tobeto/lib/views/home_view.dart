@@ -3,6 +3,7 @@ import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/views/pages/calendar_page.dart';
 import 'package:project_tobeto/views/pages/catalog_page.dart';
 import 'package:project_tobeto/views/pages/home_page.dart';
+import 'package:project_tobeto/views/pages/profile_edit_page.dart';
 import 'package:project_tobeto/views/pages/profile_page.dart';
 import 'package:project_tobeto/views/pages/review_page.dart';
 
@@ -19,10 +20,10 @@ class _HomeViewState extends State<HomeView> {
     HomePage(),
     ReviewPage(),
     ProfilePage(),
-    CatalogPage(), //buraya catalogpage yazınca yazdığım sayfa emülatörde açılmıyor ama ;örneğin catalog searchbar yazarsam açılıyor.Nerde hata yapıyorum?
+    CatalogPage(),
     CalendarPage(),
     HomePage(),
-    ProfilePage(), // TODO: Buraya profil düzenleme sayfası gelecek.
+    ProfileEditPage(),
   ];
 
   void _onItemTapped(int index) {
