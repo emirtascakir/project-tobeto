@@ -111,7 +111,7 @@ class ProfileEditPage extends StatelessWidget {
                             context: context,
                             initialDate: _dateOfBirth,
                             firstDate: DateTime(1930),
-                            lastDate: _dateOfBirth,
+                            lastDate: DateTime.now(),
                           );
 
                           if (pickedDate != null) {
