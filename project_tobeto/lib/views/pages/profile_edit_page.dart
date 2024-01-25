@@ -23,7 +23,7 @@ class ProfileEditPage extends StatelessWidget {
     var _aboutMe = "";
 
     return SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
@@ -61,22 +61,13 @@ class ProfileEditPage extends StatelessWidget {
                   child: Column(
                     children: [
                       _buildTextFormField(
-                        _name,
-                        "Adınız",
-                        TextInputType.name,
-                      ),
+                          _name, "Adınız", TextInputType.name, 45),
                       const SizedBox(height: 20),
                       _buildTextFormField(
-                        _surname,
-                        "Soyadınız",
-                        TextInputType.text,
-                      ),
+                          _surname, "Soyadınız", TextInputType.text, 25),
                       const SizedBox(height: 20),
-                      _buildTextFormField(
-                        _phoneNumber,
-                        "Telefon Numaranız",
-                        TextInputType.phone,
-                      ),
+                      _buildTextFormField(_phoneNumber, "Telefon Numaranız",
+                          TextInputType.phone, 13),
                       const SizedBox(height: 20),
                       TextFormField(
                         cursorColor: Colors.grey,
@@ -96,7 +87,7 @@ class ProfileEditPage extends StatelessWidget {
                                 color: Colors.black87,
                               ),
                               borderRadius: BorderRadius.circular(12.0)),
-                          labelText: 'Tarih',
+                          labelText: 'Doğum Tarihiniz',
                           hintText: 'gg/aa/yyyy',
                         ),
                         keyboardType: TextInputType.none,
@@ -123,22 +114,13 @@ class ProfileEditPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       _buildTextFormField(
-                        _tcIdNo,
-                        "TC Kimlik No",
-                        TextInputType.number,
-                      ),
+                          _tcIdNo, "TC Kimlik No", TextInputType.number, 11),
                       const SizedBox(height: 20),
                       _buildTextFormField(
-                        _eMail,
-                        "E-posta",
-                        TextInputType.emailAddress,
-                      ),
+                          _eMail, "E-posta", TextInputType.emailAddress, 30),
                       const SizedBox(height: 20),
                       _buildTextFormField(
-                        _aboutMe,
-                        "Hakkımda",
-                        TextInputType.text,
-                      ),
+                          _aboutMe, "Hakkımda", TextInputType.text, 100),
                       const SizedBox(height: 20),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -167,11 +149,13 @@ class ProfileEditPage extends StatelessWidget {
   }
 
   TextFormField _buildTextFormField(
-      String value, String label, TextInputType keyboardType) {
+      String value, String label, TextInputType keyboardType, int maxLength) {
     return TextFormField(
+      maxLength: maxLength,
       cursorColor: Colors.grey,
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        counterText: '',
         labelText: label,
         labelStyle: const TextStyle(color: Colors.grey),
         enabledBorder: OutlineInputBorder(

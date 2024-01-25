@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:project_tobeto/models/user_model.dart';
 
 abstract class AuthState {}
 
@@ -15,3 +16,5 @@ class Authenticated extends AuthState {
 
   Authenticated({this.user});
 }
+
+class SignedOut extends AuthState {}

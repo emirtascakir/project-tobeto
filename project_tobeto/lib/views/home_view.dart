@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
+import 'package:project_tobeto/blocs/auth/auth_state.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/views/pages/calendar_page.dart';
 import 'package:project_tobeto/views/pages/catalog_page.dart';

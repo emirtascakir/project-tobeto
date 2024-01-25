@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_event.dart';
 import 'package:project_tobeto/blocs/auth/auth_state.dart';
 import 'package:project_tobeto/constants/collections.dart';
+import 'package:project_tobeto/models/user_model.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final FirebaseAuth _firebaseAuth;
@@ -26,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         UserCredential userCredential =
             await _firebaseAuth.signInWithEmailAndPassword(
                 email: event.email, password: event.password);
+        emit(Authenticated(user: userCredential.user));
       } on FirebaseAuthException catch (e) {
         emit(NotAuthenticated(errorMessage: e.message));
       }
@@ -44,11 +46,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           'username': event.username,
           'registerDate': DateTime.now()
         });
+        emit(Authenticated(user: userCredential.user));
       } on FirebaseAuthException catch (e) {}
     });
 
     on<Logout>((event, emit) async {
       await _firebaseAuth.signOut();
+      emit(SignedOut());
     });
   }
 }
