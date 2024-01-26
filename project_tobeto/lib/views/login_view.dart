@@ -18,6 +18,7 @@ class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
   String _password = '';
+  bool _obscureText = true;
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
@@ -104,6 +105,7 @@ class _LoginViewState extends State<LoginView> {
                                   }
                                   return null;
                                 },
+                                obscureText: _obscureText,
                                 keyboardType: TextInputType.visiblePassword,
                                 style: TextStyle(
                                     color:
@@ -118,7 +120,11 @@ class _LoginViewState extends State<LoginView> {
                                             .colorScheme
                                             .secondary),
                                     suffixIcon: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            _obscureText = !_obscureText;
+                                          });
+                                        },
                                         icon: Icon(
                                           Icons.visibility_off,
                                           color: Theme.of(context)

@@ -1,27 +1,39 @@
-import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   String email;
   String username;
-  String password;
   String? name;
   String? surname;
   String? phoneNumber;
-  DateTime? birthOfDate;
+  DateTime? dateOfBirth;
   String? tcIdNo;
   String? aboutMe;
-  XFile? photo;
+  String? photoUrl;
 
   UserModel({
     required this.email,
     required this.username,
-    required this.password,
     this.name,
     this.surname,
     this.phoneNumber,
-    this.birthOfDate,
+    this.dateOfBirth,
     this.tcIdNo,
     this.aboutMe,
-    this.photo,
+    this.photoUrl,
   });
+
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      email: map['email'] ?? '',
+      username: map['username'] ?? '',
+      name: map['name'],
+      surname: map['surname'],
+      phoneNumber: map['phoneNumber'],
+      dateOfBirth: (map['dateOfBirth'] as Timestamp?)?.toDate(),
+      tcIdNo: map['tcIdNo'],
+      aboutMe: map['aboutMe'],
+      photoUrl: map['photoUrl'],
+    );
+  }
 }

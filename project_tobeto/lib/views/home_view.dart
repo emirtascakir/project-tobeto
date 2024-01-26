@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
-import 'package:project_tobeto/blocs/auth/auth_state.dart';
+import 'package:project_tobeto/blocs/auth/auth_event.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/views/pages/calendar_page.dart';
 import 'package:project_tobeto/views/pages/catalog_page.dart';
@@ -35,10 +35,17 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
+  void _logout() {
+    context.read<AuthBloc>().add(Logout());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: _logout, icon: const Icon(Icons.logout))
+        ],
         title: Image.asset(
           "assets/images/tobeto-logo.png",
           width: context.deviceSize.width * .35,

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
+import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
 import 'package:project_tobeto/constants/routes.dart';
 import 'package:project_tobeto/firebase_options.dart';
 import 'package:project_tobeto/theme/theme_dark.dart';
@@ -17,9 +18,8 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<AuthBloc>(
-          create: (context) => AuthBloc(),
-        )
+        BlocProvider<AuthBloc>(create: (context) => AuthBloc()),
+        BlocProvider<ProfileBloc>(create: (context) => ProfileBloc())
       ],
       child: CalendarControllerProvider(
         controller: EventController(),

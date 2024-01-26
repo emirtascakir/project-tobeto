@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_event.dart';
 import 'package:project_tobeto/blocs/auth/auth_state.dart';
 import 'package:project_tobeto/constants/collections.dart';
-import 'package:project_tobeto/models/user_model.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final FirebaseAuth _firebaseAuth;
