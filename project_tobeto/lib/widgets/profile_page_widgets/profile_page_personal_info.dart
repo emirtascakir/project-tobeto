@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project_tobeto/constants/date_formatter.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/user_model.dart';
 
 class ProfilePagePersonalInfo extends StatelessWidget {
   const ProfilePagePersonalInfo({
+    required this.user,
     super.key,
   });
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -98,13 +102,13 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Ad Soyad"),
+                          const Text("Ad Soyad"),
                           Text(
-                            "Emir Taşçakır",
-                            style: TextStyle(
+                            "${user.name} ${user.surname}",
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           )
                         ],
@@ -142,7 +146,8 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                         children: <Widget>[
                           const Text("Doğum Tarihi"),
                           Text(
-                            DateTime.now().toString(),
+                            DateFormatter.formatter
+                                .format(user.dateOfBirth ?? DateTime.now()),
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           )
@@ -176,13 +181,13 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("E-Posta Adresi"),
+                          const Text("E-Posta Adresi"),
                           Text(
-                            "emir@icloud.com",
-                            style: TextStyle(
+                            user.email,
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           )
                         ],
@@ -215,13 +220,13 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Telefon Numarası"),
+                          const Text("Telefon Numarası"),
                           Text(
-                            "+905550001122",
-                            style: TextStyle(
+                            user.phoneNumber ?? "",
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
                           )
                         ],

@@ -3,11 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_state.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/user_model.dart';
 
 class HomePageHeader extends StatelessWidget {
   const HomePageHeader({
     super.key,
+    required this.user,
   });
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +40,8 @@ class HomePageHeader extends StatelessWidget {
                   )
                 ],
               ),
-              const Text(
-                "Sema",
+              Text(
+                user.name ?? "",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300),
               ),
               const SizedBox(

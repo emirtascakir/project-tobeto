@@ -51,14 +51,15 @@ class ProfileEditPage extends StatelessWidget {
         if (state is ProfileInfoFetched) {
           UserModel user = state.user;
 
-          _name.text = user.name!;
-          _surname.text = user.surname!;
-          _username.text = user.username!;
-          _phoneNumber.text = user.phoneNumber!;
-          _dateController.text = _dateFormat.format(user.dateOfBirth!)!;
-          _tcIdNo.text = user.tcIdNo!;
+          _name.text = user.name ?? "";
+          _surname.text = user.surname ?? "";
+          _username.text = user.username;
+          _phoneNumber.text = user.phoneNumber ?? "";
+          _dateController.text =
+              _dateFormat.format(user.dateOfBirth ?? DateTime.now());
+          _tcIdNo.text = user.tcIdNo ?? "";
           _eMail.text = user.email;
-          _aboutMe.text = user.aboutMe!;
+          _aboutMe.text = user.aboutMe ?? "";
         }
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

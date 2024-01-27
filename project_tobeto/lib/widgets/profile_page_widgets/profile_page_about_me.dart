@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/user_model.dart';
 
 class ProfilePageAboutMe extends StatelessWidget {
   const ProfilePageAboutMe({
     super.key,
+    required this.user,
   });
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,11 @@ class ProfilePageAboutMe extends StatelessWidget {
             ),
             Divider(
               color: context.colorScheme.primary,
-            )
+            ),
+            Text(
+              user.aboutMe ?? "",
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
       ),
