@@ -34,7 +34,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           'aboutMe': event.user.aboutMe,
           'photoUrl': event.user.photoUrl
         });
-        emit(Initial());
+        emit(ProfileInfoFetched(user: event.user));
       } else {
         emit(ProfileUpdateFailed(errorMessage: 'Oturum Kapalı'));
       }

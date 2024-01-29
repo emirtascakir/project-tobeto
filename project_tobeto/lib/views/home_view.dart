@@ -65,12 +65,12 @@ class _HomeViewState extends State<HomeView> {
             body: Center(
               child: [
                 HomePage(user: user),
-                ReviewPage(),
-                ProfilePage(),
-                CatalogPage(),
-                CalendarPage(),
+                const ReviewPage(),
+                const ProfilePage(),
+                const CatalogPage(),
+                const CalendarPage(),
                 HomePage(user: user),
-                ProfileEditPage(),
+                const ProfileEditPage(),
               ][_selectedIndex],
               //child: _widgetOptions[_selectedIndex],
             ),
@@ -135,10 +135,20 @@ class _HomeViewState extends State<HomeView> {
                       Navigator.pop(context);
                     },
                   ),
-                  const Divider(),
+                  Divider(
+                    color: context.colorScheme.background,
+                  ),
                   ListTile(
-                    title: const Row(
-                      children: [Text('Tobeto'), Icon(Icons.home_outlined)],
+                    title: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                              color: context.colorScheme.background)),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text('Tobeto'), Icon(Icons.home_outlined)],
+                      ),
                     ),
                     selected: _selectedIndex == 5,
                     onTap: () {
@@ -148,16 +158,17 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   ListTile(
                     title: Container(
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                            color: Theme.of(context).colorScheme.background),
+                        border:
+                            Border.all(color: context.colorScheme.background),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('John Doe'),
-                          Icon(Icons.account_circle_outlined)
+                          Text(user.name ?? user.username),
+                          const Icon(Icons.account_circle_outlined)
                         ],
                       ),
                     ),
@@ -173,7 +184,7 @@ class _HomeViewState extends State<HomeView> {
                         Icon(
                           Icons.copyright,
                         ),
-                        Text('2023 Tobeto')
+                        Text('2024 Tobeto')
                       ],
                     ),
                   ),
@@ -182,7 +193,7 @@ class _HomeViewState extends State<HomeView> {
             ),
           );
         }
-        return const Center(child: CircularProgressIndicator());
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
       },
     );
   }
