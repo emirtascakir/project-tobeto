@@ -43,7 +43,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             .set({
           'email': event.email,
           'username': event.username,
-          'registerDate': DateTime.now()
+          'registerDate': DateTime.now(),
+          'photoUrl':
+              'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg',
         });
         emit(Authenticated(user: userCredential.user));
       } on FirebaseAuthException catch (e) {}

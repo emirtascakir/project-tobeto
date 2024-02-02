@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:project_tobeto/blocs/photo/photo_bloc.dart';
+import 'package:project_tobeto/blocs/photo/photo_event.dart';
 import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
 import 'package:project_tobeto/blocs/profile/profile_event.dart';
 import 'package:project_tobeto/blocs/profile/profile_state.dart';
@@ -10,9 +11,14 @@ import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/user_model.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/home_page_footer.dart';
 
-class ProfileEditPage extends StatelessWidget {
+class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({super.key});
 
+  @override
+  State<ProfileEditPage> createState() => _ProfileEditPageState();
+}
+
+class _ProfileEditPageState extends State<ProfileEditPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController _dateController = TextEditingController();
@@ -25,6 +31,7 @@ class ProfileEditPage extends StatelessWidget {
     TextEditingController _eMail = TextEditingController();
     TextEditingController _aboutMe = TextEditingController();
     TextEditingController _username = TextEditingController();
+    String? _photoUrl;
 
     void _save() {
       context.read<ProfileBloc>().add(
@@ -60,6 +67,7 @@ class ProfileEditPage extends StatelessWidget {
           _tcIdNo.text = user.tcIdNo ?? "";
           _eMail.text = user.email;
           _aboutMe.text = user.aboutMe ?? "";
+          _photoUrl = user.photoUrl;
         }
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -70,6 +78,7 @@ class ProfileEditPage extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
+                    width: context.deviceSize.width,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -80,18 +89,19 @@ class ProfileEditPage extends StatelessWidget {
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight)),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey.shade400,
-                      ),
+                    child: InkWell(
+                      onTap: () {
+                        context.read<PhotoBloc>().add(UpdatePhoto());
+                        context.read<ProfileBloc>().add(FetchProfileInfo());
+                      },
                       child: Center(
-                        child: SvgPicture.asset(
-                          "assets/images/avatar.svg",
-                          height: 80,
-                          width: 80,
-                          color: Colors.purple,
+                        child: ClipOval(
+                          child: Image.network(
+                            _photoUrl ??
+                                "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
+                            width: 150,
+                            height: 150,
+                          ),
                         ),
                       ),
                     ),
