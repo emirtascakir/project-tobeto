@@ -1,0 +1,1 @@
+ C:\\Users\\emirt\\FlutterProjects\\project-tobeto\\project_tobeto\\.dart_tool\\flutter_build\\b7f953a2998ac51fc9ea1ed075584c8e\\native_assets.yaml: 
