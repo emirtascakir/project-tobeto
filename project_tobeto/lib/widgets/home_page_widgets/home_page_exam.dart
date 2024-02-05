@@ -1,58 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_tobeto/blocs/exam/exam_bloc.dart';
+import 'package:project_tobeto/blocs/exam/exam_event.dart';
+import 'package:project_tobeto/blocs/exam/exam_state.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/exam_model.dart';
 
 class HomePageExam extends StatelessWidget {
-  const HomePageExam({super.key, required this.examName, required this.time});
-  final String examName;
-  final int time;
+  const HomePageExam({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: context.colorScheme.background,
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: const Offset(0, 3),
+    return BlocBuilder<ExamBloc, ExamState>(
+      builder: (context, state) {
+        if (state is Initial) {
+          context.read<ExamBloc>().add(FetchExams());
+        } else if (state is ExamsFetched) {
+          return Container(
+            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colorScheme.background,
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+                color: context.colorScheme.onBackground),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Text(
+                  "Sınavlarım",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  height: context.deviceSize.height * .3,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.exam.length,
+                      itemBuilder: (context, index) {
+                        return ExamCard(exam: state.exam[index]);
+                      }),
+                ),
+              ],
             ),
-          ],
-          color: context.colorScheme.onBackground),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const Text(
-            "Sınavlarım",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            height: context.deviceSize.height * .3,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return ExamCard(examName: examName, time: time);
-                }),
-          ),
-        ],
-      ),
+          );
+        } else if (state is ExamFetchFailed) {
+          return Container(
+            padding: const EdgeInsets.all(10),
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colorScheme.background,
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+                color: context.colorScheme.onBackground),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Sınavlarım",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text("Mevcut sınavınız bulunmuyor.")
+              ],
+            ),
+          );
+        }
+        return const SizedBox();
+      },
     );
   }
 }
 
 class ExamCard extends StatelessWidget {
-  const ExamCard({
-    super.key,
-    required this.examName,
-    required this.time,
-  });
+  const ExamCard({super.key, required this.exam});
 
-  final String examName;
-  final int time;
+  final ExamModel exam;
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +109,13 @@ class ExamCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            'Herkes İçin Kodlama 1D Değerlendirme Sınavı',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          Text(
+            exam.examName,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
           ),
-          const Text(
-            'Herkes İçin\nKodlama 1D',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w200),
+          Text(
+            exam.examClass,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w200),
           ),
           Row(
             children: <Widget>[
@@ -91,7 +124,7 @@ class ExamCard extends StatelessWidget {
                 color: context.colorScheme.primary,
               ),
               Text(
-                "${time.toString()} Dakika",
+                "${exam.examDuration.toString()} Dakika",
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               )

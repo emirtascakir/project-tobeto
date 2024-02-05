@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
           HomePageHeader(user: user),
           const HomePageBody(),
           const SizedBox(height: 10),
-          const HomePageExam(examName: 'Sınav', time: 45),
+          const HomePageExam(),
           const HomePageBoxes(),
           const HomePageFooter()
         ],

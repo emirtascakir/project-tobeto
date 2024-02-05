@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_tobeto/constants/date_formatter.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/user_model.dart';
@@ -61,18 +60,13 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                         context.colorScheme.primary,
                         Colors.pink.shade900
                       ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey.shade400,
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/images/avatar.svg",
-                        height: 80,
-                        width: 80,
-                        color: Colors.purple,
+                  child: Center(
+                    child: ClipOval(
+                      child: Image.network(
+                        user.photoUrl ??
+                            "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
+                        width: 150,
+                        height: 150,
                       ),
                     ),
                   ),
