@@ -71,12 +71,37 @@ class HomePageExam extends StatelessWidget {
                   "Sınavlarım",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text("Mevcut sınavınız bulunmuyor.")
+                Text(
+                    "Sınavlarınız şu anda görüntülenemiyor. Lütfen daha sonra tekrar deneyin.")
               ],
             ),
           );
         }
-        return const SizedBox();
+        return Container(
+          padding: const EdgeInsets.all(10),
+          width: double.infinity,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: context.colorScheme.background,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+              color: context.colorScheme.onBackground),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Sınavlarım",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Text("Mevcut sınavınız bulunmuyor.")
+            ],
+          ),
+        );
       },
     );
   }
