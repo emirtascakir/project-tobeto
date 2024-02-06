@@ -39,30 +39,31 @@ class _RegisterViewState extends State<RegisterView> {
         return GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
-            body: Stack(
-              children: [
-                SizedBox(
-                  width: context.deviceSize.width,
-                  height: context.deviceSize.height,
-                  child: Image.asset(
-                    "assets/images/background.png",
-                    fit: BoxFit.cover,
+            body: SafeArea(
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: context.deviceSize.width,
+                    height: context.deviceSize.height,
+                    child: Image.asset(
+                      "assets/images/background.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                Center(
-                  child: SizedBox(
-                    height: context.deviceSize.height * 0.6,
-                    width: context.deviceSize.width * 0.85,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18)),
-                      color: Colors.transparent,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 20),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
+                  Center(
+                    child: SizedBox(
+                      height: context.deviceSize.height * 0.65,
+                      width: context.deviceSize.width * 0.85,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18)),
+                        color: Colors.transparent,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Image.asset(
@@ -179,7 +180,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 ElevatedButton(
                                     onPressed: _submit,
                                     child: SizedBox(
-                                      height: 45,
+                                      height: context.deviceSize.height * 0.05,
                                       width: context.deviceSize.width,
                                       child: Center(
                                         child: Text(
@@ -201,20 +202,23 @@ class _RegisterViewState extends State<RegisterView> {
                                   style: TextStyle(fontSize: 18),
                                 ),
                                 TextButton(
-                                    onPressed: () => Navigator.of(context)
-                                        .pushReplacementNamed(Routes.login),
-                                    child: const Text(
-                                      "Giriş Yap",
-                                      style: TextStyle(
-                                          color: Colors.blue, fontSize: 18),
-                                    )),
-                              ]),
+                                  onPressed: () => Navigator.of(context)
+                                      .pushReplacementNamed(Routes.login),
+                                  child: const Text(
+                                    "Giriş Yap",
+                                    style: TextStyle(
+                                        color: Colors.blue, fontSize: 18),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

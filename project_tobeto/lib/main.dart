@@ -2,6 +2,7 @@ import 'package:calendar_view/calendar_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:project_tobeto/blocs/announcement/announcement_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
 import 'package:project_tobeto/blocs/exam/exam_bloc.dart';
 import 'package:project_tobeto/blocs/photo/photo_bloc.dart';
@@ -24,6 +25,7 @@ void main() async {
         BlocProvider<ProfileBloc>(create: (context) => ProfileBloc()),
         BlocProvider<PhotoBloc>(create: (context) => PhotoBloc()),
         BlocProvider<ExamBloc>(create: (context) => ExamBloc()),
+        BlocProvider<AnnouncementBloc>(create: (context) => AnnouncementBloc()),
       ],
       child: CalendarControllerProvider(
         controller: EventController(),

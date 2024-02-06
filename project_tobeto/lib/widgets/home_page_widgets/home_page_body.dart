@@ -107,7 +107,7 @@ class HomePageBody extends StatelessWidget {
                     //ListView.builder Prototip Modeller Yazıldığında Gerisi Geliştirilecektir
                     ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 12,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
                           return const TabViewApplicationCard();
                         }),
