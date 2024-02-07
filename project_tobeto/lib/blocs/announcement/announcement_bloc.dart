@@ -7,6 +7,7 @@ import 'package:project_tobeto/models/announcement_model.dart';
 
 class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+
   AnnouncementBloc() : super(Initial()) {
     on<FetchAnnouncements>(_onFetchAnnouncements);
   }
@@ -22,7 +23,7 @@ class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
           in querySnapshot.docs) {
         announcements.add(AnnouncementModel.fromSnapshot(snapshot));
       }
-      emit(AnnouncementsFetched(announcement: announcements));
+      emit(AnnouncementsFetched(announcements: announcements));
     } catch (e) {
       emit(AnnouncementFetchFailed(errorMessage: e.toString()));
     }

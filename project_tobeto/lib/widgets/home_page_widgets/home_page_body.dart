@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:project_tobeto/blocs/announcement/announcement_bloc.dart';
+import 'package:project_tobeto/blocs/announcement/announcement_event.dart';
+import 'package:project_tobeto/blocs/announcement/announcement_state.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_announcement_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_application_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_education_card.dart';
@@ -121,14 +125,32 @@ class HomePageBody extends StatelessWidget {
                               courseName: "courseName",
                               date: DateTime.now());
                         }),
-                    ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
-                        itemBuilder: (context, index) {
-                          return TabViewAnnouncementCard(
-                              announcementName: "announcementName",
-                              date: DateTime.now());
-                        }),
+                    BlocBuilder<AnnouncementBloc, AnnouncementState>(
+                      builder: (context, state) {
+                        if (state is Initial) {
+                          context
+                              .read<AnnouncementBloc>()
+                              .add(FetchAnnouncements());
+                        } else if (state is AnnouncementsFetched) {
+                          return ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: state.announcements.length,
+                              itemBuilder: (context, index) {
+                                return TabViewAnnouncementCard(
+                                    announcement: state.announcements[index]);
+                              });
+                        } else if (state is AnnouncementFetchFailed) {
+                          return const Text(
+                              "Duyurularınız şu anda görüntülenemiyor. Lütfen daha sonra tekrar deneyiniz.");
+                        }
+                        return const Center(
+                            child: Text(
+                          "Mevcut Duyuru Bulunmuyor.",
+                          style: TextStyle(fontSize: 20),
+                        ));
+                      },
+                    ),
+
                     ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 12,

@@ -5,8 +5,8 @@ abstract class AnnouncementState {}
 class Initial extends AnnouncementState {}
 
 class AnnouncementsFetched extends AnnouncementState {
-  List<AnnouncementModel> announcement;
-  AnnouncementsFetched({required this.announcement});
+  List<AnnouncementModel> announcements;
+  AnnouncementsFetched({required this.announcements});
 }
 
 class AnnouncementFetchFailed extends AnnouncementState {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/announcement_model.dart';
 
 class TabViewAnnouncementCard extends StatelessWidget {
-  const TabViewAnnouncementCard(
-      {super.key, required this.announcementName, required this.date});
-  final String announcementName;
-  final DateTime date;
+  const TabViewAnnouncementCard({super.key, required this.announcement});
+
+  final AnnouncementModel announcement;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class TabViewAnnouncementCard extends StatelessWidget {
               ],
             ),
             Text(
-              announcementName,
+              announcement.announcementTitle,
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Row(
@@ -53,7 +53,7 @@ class TabViewAnnouncementCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     const Icon(Icons.calendar_month_outlined),
-                    Text(date.toString())
+                    Text(announcement.announcementDate.toString())
                   ],
                 ),
                 TextButton(onPressed: () {}, child: const Text("Devamını Oku"))
