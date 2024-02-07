@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/announcement_model.dart';
 
@@ -56,7 +57,57 @@ class TabViewAnnouncementCard extends StatelessWidget {
                     Text(announcement.announcementDate.toString())
                   ],
                 ),
-                TextButton(onPressed: () {}, child: const Text("Devamını Oku"))
+                TextButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return SingleChildScrollView(
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        icon: const Icon(Icons.close, size: 30),
+                                      )
+                                    ],
+                                  ),
+                                  Text(
+                                    announcement.announcementTitle,
+                                    style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    DateFormat()
+                                        .format(announcement.announcementDate),
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    announcement.announcementDescription,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w300),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: const Text("Devamını Oku"))
               ],
             )
           ],
