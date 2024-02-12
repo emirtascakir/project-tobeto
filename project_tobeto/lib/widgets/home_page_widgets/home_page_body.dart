@@ -4,6 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:project_tobeto/blocs/announcement/announcement_bloc.dart';
 import 'package:project_tobeto/blocs/announcement/announcement_event.dart';
 import 'package:project_tobeto/blocs/announcement/announcement_state.dart';
+import 'package:project_tobeto/blocs/education/education_bloc.dart';
+import 'package:project_tobeto/blocs/education/education_event.dart';
+import 'package:project_tobeto/blocs/education/education_state.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_announcement_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_application_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_education_card.dart';
@@ -115,19 +118,31 @@ class HomePageBody extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return const TabViewApplicationCard();
                         }),
-                    ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
-                        itemBuilder: (context, index) {
-                          return TabViewEducationCard(
-                              educationPhotoPath:
-                                  "assets/images/tobeto-logo.png",
-                              courseName: "courseName",
-                              date: DateTime.now());
-                        }),
+                    BlocBuilder<EducationBloc, EducationState>(
+                      builder: (context, state) {
+                        if (state is EducationInitial) {
+                          context.read<EducationBloc>().add(FetchEducations());
+                        } else if (state is EducationsFetched) {
+                          return ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: state.education.length,
+                              itemBuilder: (context, index) {
+                                return TabViewEducationCard(
+                                  education: state.education[index],
+                                );
+                              });
+                        }
+                        return const Center(
+                            child: Text(
+                          "Mevcut Ders Bulunmuyor.",
+                          style: TextStyle(fontSize: 20),
+                        ));
+                      },
+                    ),
+
                     BlocBuilder<AnnouncementBloc, AnnouncementState>(
                       builder: (context, state) {
-                        if (state is Initial) {
+                        if (state is AnnouncementInitial) {
                           context
                               .read<AnnouncementBloc>()
                               .add(FetchAnnouncements());

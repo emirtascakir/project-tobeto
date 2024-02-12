@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/education_model.dart';
 
 class TabViewEducationCard extends StatelessWidget {
-  const TabViewEducationCard(
-      {super.key,
-      required this.educationPhotoPath,
-      required this.courseName,
-      required this.date});
-  final String educationPhotoPath;
-  final String courseName;
-  final DateTime date;
+  const TabViewEducationCard({
+    required this.education,
+    super.key,
+  });
+  final EducationModel education;
 
   @override
   Widget build(BuildContext context) {
@@ -26,25 +24,25 @@ class TabViewEducationCard extends StatelessWidget {
             ],
             color: Colors.white),
         width: context.deviceSize.width * .9,
-        height: 50.0,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Image.asset(
-              educationPhotoPath,
-              width: double.infinity,
+            Expanded(
+              child: AspectRatio(
+                aspectRatio: 20 / 9,
+                child: Image.network(
+                  education.educationImage,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            Text(courseName),
-            Text(date.toString()),
+            Text(education.educationName),
             ElevatedButton(
-                onPressed: () {},
-                child: Container(
-                  color: context.colorScheme.onBackground,
-                  child: const Text(
-                    "Eğitime Git",
-                  ),
-                ))
+              onPressed: () {},
+              child: const Text(
+                "Eğitime Git",
+              ),
+            ),
           ],
         ));
   }

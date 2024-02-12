@@ -8,7 +8,7 @@ import 'package:project_tobeto/models/announcement_model.dart';
 class AnnouncementBloc extends Bloc<AnnouncementEvent, AnnouncementState> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  AnnouncementBloc() : super(Initial()) {
+  AnnouncementBloc() : super(AnnouncementInitial()) {
     on<FetchAnnouncements>(_onFetchAnnouncements);
   }
 

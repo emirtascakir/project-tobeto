@@ -54,7 +54,7 @@ class TabViewAnnouncementCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     const Icon(Icons.calendar_month_outlined),
-                    Text(announcement.announcementDate.toString())
+                    Text(DateFormat().format(announcement.announcementDate))
                   ],
                 ),
                 TextButton(

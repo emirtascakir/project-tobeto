@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_tobeto/blocs/announcement/announcement_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
+import 'package:project_tobeto/blocs/education/education_bloc.dart';
 import 'package:project_tobeto/blocs/exam/exam_bloc.dart';
 import 'package:project_tobeto/blocs/photo/photo_bloc.dart';
 import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
@@ -26,6 +27,7 @@ void main() async {
         BlocProvider<PhotoBloc>(create: (context) => PhotoBloc()),
         BlocProvider<ExamBloc>(create: (context) => ExamBloc()),
         BlocProvider<AnnouncementBloc>(create: (context) => AnnouncementBloc()),
+        BlocProvider<EducationBloc>(create: (context) => EducationBloc()),
       ],
       child: CalendarControllerProvider(
         controller: EventController(),

@@ -13,24 +13,27 @@ class CatalogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      physics: ClampingScrollPhysics(),
-      child: Column(
-        children: <Widget>[
-          CatalogSearchBar(),
-          SizedBox(height: 15),
-          CatalogFilterButton(),
-          SizedBox(height: 15),
-          CatalogEducation(),
-          SizedBox(height: 40),
-          CatalogEducation2(),
-          SizedBox(height: 40),
-          CatalogEducation3(),
-          SizedBox(height: 40),
-          NextButton(),
-          SizedBox(height: 30),
-          HomePageFooter()
-        ],
+    return SingleChildScrollView(
+      physics: const ClampingScrollPhysics(),
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: const Column(
+          children: <Widget>[
+            CatalogSearchBar(),
+            SizedBox(height: 15),
+            CatalogFilterButton(),
+            SizedBox(height: 15),
+            CatalogEducation(),
+            SizedBox(height: 40),
+            CatalogEducation2(),
+            SizedBox(height: 40),
+            CatalogEducation3(),
+            SizedBox(height: 40),
+            NextButton(),
+            SizedBox(height: 30),
+            HomePageFooter()
+          ],
+        ),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:project_tobeto/models/announcement_model.dart';
 
 abstract class AnnouncementState {}
 
-class Initial extends AnnouncementState {}
+class AnnouncementInitial extends AnnouncementState {}
 
 class AnnouncementsFetched extends AnnouncementState {
   List<AnnouncementModel> announcements;
