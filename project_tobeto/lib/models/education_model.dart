@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EducationModel {
+  String educationId;
   String educationName;
   String educationImage;
   EducationModel({
+    required this.educationId,
     required this.educationName,
     required this.educationImage,
   });
@@ -12,7 +14,9 @@ class EducationModel {
       QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
     Map<String, dynamic> data = snapshot.data();
     return EducationModel(
-        educationName: data['educationName'] ?? '',
-        educationImage: data['educationImage'] ?? '');
+      educationId: data['educationId'],
+      educationName: data['educationName'],
+      educationImage: data['educationImage'],
+    );
   }
 }

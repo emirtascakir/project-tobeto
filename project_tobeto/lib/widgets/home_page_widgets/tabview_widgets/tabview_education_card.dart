@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/education_model.dart';
+import 'package:project_tobeto/views/lesson_view.dart';
 
 class TabViewEducationCard extends StatelessWidget {
   const TabViewEducationCard({
@@ -26,6 +27,7 @@ class TabViewEducationCard extends StatelessWidget {
         width: context.deviceSize.width * .9,
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Expanded(
               child: AspectRatio(
@@ -36,9 +38,16 @@ class TabViewEducationCard extends StatelessWidget {
                 ),
               ),
             ),
-            Text(education.educationName),
-            ElevatedButton(
-              onPressed: () {},
+            Text(
+              education.educationName,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => LessonView(education: education),
+                ));
+              },
               child: const Text(
                 "Eğitime Git",
               ),

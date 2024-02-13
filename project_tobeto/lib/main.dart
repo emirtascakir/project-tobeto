@@ -6,6 +6,7 @@ import 'package:project_tobeto/blocs/announcement/announcement_bloc.dart';
 import 'package:project_tobeto/blocs/auth/auth_bloc.dart';
 import 'package:project_tobeto/blocs/education/education_bloc.dart';
 import 'package:project_tobeto/blocs/exam/exam_bloc.dart';
+import 'package:project_tobeto/blocs/lesson/lesson_bloc.dart';
 import 'package:project_tobeto/blocs/photo/photo_bloc.dart';
 import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
 import 'package:project_tobeto/constants/routes.dart';
@@ -28,6 +29,7 @@ void main() async {
         BlocProvider<ExamBloc>(create: (context) => ExamBloc()),
         BlocProvider<AnnouncementBloc>(create: (context) => AnnouncementBloc()),
         BlocProvider<EducationBloc>(create: (context) => EducationBloc()),
+        BlocProvider<LessonBloc>(create: (context) => LessonBloc()),
       ],
       child: CalendarControllerProvider(
         controller: EventController(),
