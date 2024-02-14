@@ -41,10 +41,13 @@ class HomePageBody extends StatelessWidget {
             width: context.deviceSize.width * .5,
           ),
           const SizedBox(height: 15),
-          const Text(
-            "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-            textAlign: TextAlign.center,
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            child: Text(
+              "Ücretsiz eğitimlerle, geleceğin mesleklerinde sen de yerini al.",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(height: 15),
           Row(
