@@ -16,6 +16,7 @@ import 'package:project_tobeto/theme/theme_light.dart';
 import 'package:project_tobeto/views/home_view.dart';
 import 'package:project_tobeto/views/login_view.dart';
 import 'package:project_tobeto/views/register_view.dart';
+import 'package:project_tobeto/widgets/splash_screen/splash_screen_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

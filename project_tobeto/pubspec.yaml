@@ -48,6 +48,7 @@ dependencies:
   flutter_splash_screen: ^2.0.1+1
   flick_video_player: ^0.7.0
   # video_player: ^2.8.2
+  easy_splash_screen: ^1.0.4
 
 dev_dependencies:
   flutter_test:

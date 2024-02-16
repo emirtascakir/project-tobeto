@@ -13,6 +13,7 @@ import 'package:project_tobeto/views/pages/home_page.dart';
 import 'package:project_tobeto/views/pages/profile_edit_page.dart';
 import 'package:project_tobeto/views/pages/profile_page.dart';
 import 'package:project_tobeto/views/pages/review_page.dart';
+import 'package:project_tobeto/widgets/splash_screen/splash_screen_page.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
