@@ -45,9 +45,7 @@ dependencies:
   cloud_firestore: ^4.14.0
   image_picker: ^1.0.7
   firebase_storage: ^11.6.3
-  flutter_splash_screen: ^2.0.1+1
   flick_video_player: ^0.7.0
-  # video_player: ^2.8.2
   easy_splash_screen: ^1.0.4
 
 dev_dependencies:
