@@ -48,7 +48,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg',
         });
         emit(Authenticated(user: userCredential.user));
-      } on FirebaseAuthException catch (e) {}
+      } on FirebaseAuthException catch (e) {
+        print(e.toString());
+      }
     });
 
     on<Logout>((event, emit) async {

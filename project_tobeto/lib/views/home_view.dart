@@ -5,6 +5,7 @@ import 'package:project_tobeto/blocs/auth/auth_event.dart';
 import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
 import 'package:project_tobeto/blocs/profile/profile_event.dart';
 import 'package:project_tobeto/blocs/profile/profile_state.dart';
+import 'package:project_tobeto/constants/routes.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/user_model.dart';
 import 'package:project_tobeto/views/pages/calendar_page.dart';
@@ -41,6 +42,7 @@ class _HomeViewState extends State<HomeView> {
 
   void _logout() {
     context.read<AuthBloc>().add(Logout());
+    Navigator.of(context).pushReplacementNamed(Routes.login);
   }
 
   @override
