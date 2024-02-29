@@ -46,6 +46,9 @@ dependencies:
   firebase_storage: ^11.6.3
   flick_video_player: ^0.7.0
   calendar_view: ^1.1.0
+  vimeo_video_player: ^0.0.12
+  cached_video_player_plus: ^2.0.0
+  video_player: ^2.8.2
 
 dev_dependencies:
   flutter_test:

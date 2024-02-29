@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
 import 'package:project_tobeto/models/education_model.dart';
-import 'package:project_tobeto/views/lesson_view.dart';
+import 'package:project_tobeto/views/education_view.dart';
 
 class TabViewEducationCard extends StatelessWidget {
   const TabViewEducationCard({
@@ -45,7 +45,7 @@ class TabViewEducationCard extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => LessonView(education: education),
+                  builder: (context) => EducationView(education: education),
                 ));
               },
               child: const Text(
