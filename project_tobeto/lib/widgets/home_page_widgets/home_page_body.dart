@@ -7,6 +7,9 @@ import 'package:project_tobeto/blocs/announcement/announcement_state.dart';
 import 'package:project_tobeto/blocs/education/education_bloc.dart';
 import 'package:project_tobeto/blocs/education/education_event.dart';
 import 'package:project_tobeto/blocs/education/education_state.dart';
+import 'package:project_tobeto/blocs/survey/survey_bloc.dart';
+import 'package:project_tobeto/blocs/survey/survey_event.dart';
+import 'package:project_tobeto/blocs/survey/survey_state.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_announcement_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_application_card.dart';
 import 'package:project_tobeto/widgets/home_page_widgets/tabview_widgets/tabview_education_card.dart';
@@ -169,12 +172,28 @@ class HomePageBody extends StatelessWidget {
                       },
                     ),
 
-                    ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
-                        itemBuilder: (context, index) {
-                          return const TabViewSurveyCard();
-                        }),
+                    BlocBuilder<SurveyBloc, SurveyState>(
+                      builder: (context, state) {
+                        if (state is Initial) {
+                          context.read<SurveyBloc>().add(FetchSurveys());
+                        }
+                        if (state is SurveysFetched) {
+                          return ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: state.surveys.length,
+                              itemBuilder: (context, index) {
+                                return TabViewSurveyCard(
+                                    survey: state.surveys[index]);
+                              });
+                        }
+                        return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 1,
+                            itemBuilder: (context, index) {
+                              return const TabViewSurveyCard();
+                            });
+                      },
+                    )
                   ]),
                 )
               ],

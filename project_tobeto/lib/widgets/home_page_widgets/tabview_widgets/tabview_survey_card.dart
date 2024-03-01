@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project_tobeto/extensions/extension.dart';
+import 'package:project_tobeto/models/survey_model.dart';
 
 class TabViewSurveyCard extends StatelessWidget {
-  const TabViewSurveyCard({super.key});
+  const TabViewSurveyCard({super.key, this.survey});
+  final SurveyModel? survey;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,8 @@ class TabViewSurveyCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Atanmış herhangi bir anketiniz bulunmamaktadır",
+              survey?.surveyTitle ??
+                  "Atanmış herhangi bir anketiniz bulunmamaktadır",
               style: TextStyle(
                   fontSize: 18,
                   color: context.colorScheme.primary,

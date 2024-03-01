@@ -10,6 +10,7 @@ import 'package:project_tobeto/blocs/exam/exam_bloc.dart';
 import 'package:project_tobeto/blocs/lesson/lesson_bloc.dart';
 import 'package:project_tobeto/blocs/photo/photo_bloc.dart';
 import 'package:project_tobeto/blocs/profile/profile_bloc.dart';
+import 'package:project_tobeto/blocs/survey/survey_bloc.dart';
 import 'package:project_tobeto/constants/routes.dart';
 import 'package:project_tobeto/firebase_options.dart';
 import 'package:project_tobeto/theme/theme_dark.dart';
@@ -33,6 +34,7 @@ void main() async {
         BlocProvider<EducationBloc>(create: (context) => EducationBloc()),
         BlocProvider<LessonBloc>(create: (context) => LessonBloc()),
         BlocProvider<CalendarBloc>(create: (context) => CalendarBloc()),
+        BlocProvider<SurveyBloc>(create: (context) => SurveyBloc())
       ],
       child: CalendarControllerProvider(
         controller: EventController(),
