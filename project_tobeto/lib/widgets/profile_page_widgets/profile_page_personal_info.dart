@@ -61,12 +61,14 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                         Colors.pink.shade900
                       ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
                   child: Center(
-                    child: ClipOval(
-                      child: Image.network(
-                        user.photoUrl ??
-                            "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
-                        width: 150,
-                        height: 150,
+                    child: SizedBox(
+                      width: 150,
+                      height: 150,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          user.photoUrl ??
+                              "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
+                        ),
                       ),
                     ),
                   ),

@@ -95,12 +95,14 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                         context.read<ProfileBloc>().add(FetchProfileInfo());
                       },
                       child: Center(
-                        child: ClipOval(
-                          child: Image.network(
-                            _photoUrl ??
-                                "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
-                            width: 150,
-                            height: 150,
+                        child: SizedBox(
+                          width: 150,
+                          height: 150,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                              _photoUrl ??
+                                  "https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg",
+                            ),
                           ),
                         ),
                       ),
