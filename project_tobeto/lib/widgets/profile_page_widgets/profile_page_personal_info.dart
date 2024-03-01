@@ -102,10 +102,19 @@ class ProfilePagePersonalInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           const Text("Ad Soyad"),
-                          Text(
-                            "${user.name} ${user.surname}",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+                          Row(
+                            children: [
+                              Text(
+                                user.name ?? "",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                              Text(
+                                user.surname ?? "",
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                              )
+                            ],
                           )
                         ],
                       )
