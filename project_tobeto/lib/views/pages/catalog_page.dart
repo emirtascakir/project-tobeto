@@ -13,11 +13,11 @@ class CatalogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      child: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: const Column(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: const SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
+        child: Column(
           children: <Widget>[
             CatalogSearchBar(),
             SizedBox(height: 15),
@@ -29,7 +29,10 @@ class CatalogPage extends StatelessWidget {
             SizedBox(height: 40),
             CatalogEducation3(),
             SizedBox(height: 40),
-            NextButton(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: NextButton(),
+            ),
             SizedBox(height: 30),
             HomePageFooter()
           ],
