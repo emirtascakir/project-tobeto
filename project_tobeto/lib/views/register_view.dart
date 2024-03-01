@@ -121,7 +121,7 @@ class _RegisterViewState extends State<RegisterView> {
                                       disabledBorder:
                                           const OutlineInputBorder(),
                                       border: const OutlineInputBorder(),
-                                      prefixIcon: Icon(Icons.person_2_outlined,
+                                      prefixIcon: Icon(Icons.mail_outline,
                                           color: Theme.of(context)
                                               .colorScheme
                                               .secondary),
